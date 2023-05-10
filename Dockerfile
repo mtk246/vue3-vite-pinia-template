@@ -1,21 +1,12 @@
-FROM node:16-alpine
+FROM node:alpine
 
-WORKDIR /app
+WORKDIR /usr/app
 
-COPY package*.json ./
-
+COPY package.json .
 RUN npm install
+
+RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
 
 COPY . .
 
-# Change ownership of the application files to the 'node' user
-RUN chown -R node:node /app
-
-# Set proper permissions for the entire /app directory
-RUN chmod -R 755 /app
-
-EXPOSE 8000
-
-USER node
-
-CMD [ "npm", "run", "dev" ]
+CMD ["npm", "run", "dev"]
