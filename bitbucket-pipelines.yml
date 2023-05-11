@@ -8,7 +8,7 @@ pipelines:
             - apt-get update
             - apt-get install openssh-client -y
             - chmod 400 ./key.pem
-            - ssh -i ./key.pem -o StrictHostKeyChecking=no ubuntu@"$INSTANCE_IP_ADDRESS" 'cd ~/repo/takeitnow_frontend && git checkout main && git pull origin main && docker stop takeitnow_frontend_prod && docker rm takeitnow_frontend_prod && docker system prune -a -f && docker rmi takeitnow-prod_app && docker-compose -f docker-compose.prod.yml --project-name takeitnow-prod up -d && docker system prune -a -f'
+            - ssh -i ./key.pem -o StrictHostKeyChecking=no ubuntu@"$INSTANCE_IP_ADDRESS" 'cd ~/repo/takeitnow_frontend && git checkout main && git pull origin main && docker stop takeitnow_frontend_prod && docker rm takeitnow_frontend_prod && docker system prune -a -f && docker-compose -f docker-compose.prod.yml --project-name takeitnow-prod up -d && docker system prune -a -f'
     dev:
       - step:
           name: test-build
