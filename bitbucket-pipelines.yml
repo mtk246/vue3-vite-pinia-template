@@ -1,0 +1,9 @@
+pipelines:
+  default:
+    - step:
+        name: SSH into EC2 Instance
+        image: ubuntu
+        script:
+          - apt-get update
+          - apt-get install openssh-client -y
+          - ssh -i ./key.pem -o StrictHostKeyChecking=no ubuntu@"$INSTANCE_IP_ADDRESS" 'cd ~/repo/takeitnow_frontend && git pull origin main && docker build -t takeitnow_frontend . && docker-compose up -d && docker system prune -a -f'
