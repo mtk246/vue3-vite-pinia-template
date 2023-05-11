@@ -8,4 +8,4 @@ export default defineConfig({
     host: true,
     port: 8000, // This is the port which we will use in docker
   }
- })
+})
