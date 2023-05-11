@@ -4,7 +4,7 @@ services:
     container_name: takeitnow_frontend_prod
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     volumes:
       - .:/app
     ports:
