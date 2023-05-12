@@ -8,16 +8,10 @@
     </div>
 </template>
   
-  <script>
-  export default {
-    name: 'AboutComponent',
-  }
-  </script>
-  
-  <style scoped>
+<style scoped>
   .home {
     text-align: center;
     margin-top: 100px;
   }
-  </style>
+</style>
   

@@ -4,9 +4,16 @@
     
         <div class="card">
             <h1>Welcome to Production</h1>
-            <button type="button" @click="count++">Fetch API</button>
+            <button
+                type="button"
+                @click="count++"
+            >
+                Fetch API
+            </button>
         </div>
-        <router-link to="/about">Go to About Page</router-link>
+        <router-link to="/about">
+            Go to About Page
+        </router-link>
     
         <div v-if="responseData">
             <h2>Response Data:</h2>
