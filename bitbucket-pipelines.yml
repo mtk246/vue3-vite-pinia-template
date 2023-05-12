@@ -3,7 +3,7 @@ pipelines:
       - step:
           name: Clone repository
           script:
-            - git clone --branch $BITBUCKET_BRANCH --single-branch $BITBUCKET_REPO .
+            - git clone --branch $BITBUCKET_BRANCH --single-branch $BITBUCKET_REPO
           image: alpine/git
 
       - step:
