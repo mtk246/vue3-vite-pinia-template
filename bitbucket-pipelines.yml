@@ -1,4 +1,17 @@
 pipelines:
+  default:
+      - step:
+          name: Eslint and Stylelint
+          image: ubuntu
+          script:
+            - apt-get update && apt-get install -y git unzip curl
+            - curl -sL https://deb.nodesource.com/setup_14.x | bash -
+            - apt-get install -y nodejs
+            - git clone $BITBUCKET_CLONE_DIR /app
+            - cd /app
+            - git checkout $BITBUCKET_BRANCH
+            - npm install
+            - npm run lint
   branches:
     main:
       - step:
