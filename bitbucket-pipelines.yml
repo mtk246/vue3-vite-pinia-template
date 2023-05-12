@@ -3,7 +3,7 @@ pipelines:
       - step:
           name: Clone repository
           script:
-            - git clone --branch $BITBUCKET_BRANCH --single-branch $BITBUCKET_REPO
+            - git clone --branch $BITBUCKET_BRANCH --single-branch git@bitbucket.org:cipher-repo/takeitnow_frontend.git
           image: alpine/git
 
       - step:
