@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@babel/eslint-parser": "^7.21.8",
+    "axios": "^1.4.0",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },

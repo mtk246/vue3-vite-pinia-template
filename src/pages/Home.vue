@@ -1,46 +1,35 @@
-<script setup>
-import { ref } from 'vue'
-
-defineProps({
-    msg: {
-      type: String,
-      default: 'Welcome',
-    },
-})
-
-const count = ref(0)
-</script>
-
 <template>
-    <h1>{{ msg }}</h1>
-
-    <div class="card">
-        <h1>Welcome to Production</h1>
-        <button
-            type="button"
-            @click="count++"
-        >
-            count is {{ count }}
-        </button>
+    <div>
+        <h1>{{ msg }}</h1>
+    
+        <div class="card">
+            <h1>Welcome to Production</h1>
+            <button type="button" @click="count++">Fetch API</button>
+        </div>
+        <router-link to="/about">Go to About Page</router-link>
+    
+        <div v-if="responseData">
+            <h2>Response Data:</h2>
+            <pre>{{ responseData }}</pre>
+        </div>
     </div>
-    <router-link to="/about">
-        Go to About Page
-    </router-link>
 </template>
   
-<script>
-    export default {
-        name: 'HomeComponent',
+<script setup>
+import { ref, onMounted, reactive } from 'vue';
+import axios from 'axios';
+
+const msg = 'Welcome';
+const count = ref(0);
+const responseData = reactive({});
+
+onMounted(async () => {
+    try {
+        const response = await axios.get(import.meta.env.VITE_API_URL + '/getUser');
+        responseData.value = response.data;
+    } catch (error) {
+        console.error(error);
     }
+});
 </script>
-  
-<style scoped>
-    .home {
-        text-align: center;
-        margin-top: 100px;
-    }
-    .read-the-docs {
-        color: #888;
-    }
-</style>
   
