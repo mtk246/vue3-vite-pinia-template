@@ -12,6 +12,7 @@
     "lint": "npm run lint:css && npm run lint:js"
   },
   "dependencies": {
+    "@babel/eslint-parser": "^7.21.8",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },

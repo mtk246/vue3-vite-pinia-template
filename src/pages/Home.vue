@@ -2,7 +2,10 @@
 import { ref } from 'vue'
 
 defineProps({
-  msg: String,
+    msg: {
+      type: String,
+      default: 'Welcome',
+    },
 })
 
 const count = ref(0)
@@ -13,9 +16,16 @@ const count = ref(0)
 
     <div class="card">
         <h1>Welcome to Production</h1>
-        <button type="button" @click="count++">count is {{ count }}</button>
+        <button
+            type="button"
+            @click="count++"
+        >
+            count is {{ count }}
+        </button>
     </div>
-    <router-link to="/about">Go to About Page</router-link>
+    <router-link to="/about">
+        Go to About Page
+    </router-link>
 </template>
   
 <script>
