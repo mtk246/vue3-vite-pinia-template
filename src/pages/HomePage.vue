@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="flex items-center justify-center h-screen">
         <h1 class="text-center pt-8">
             {{ msg }}
         </h1>

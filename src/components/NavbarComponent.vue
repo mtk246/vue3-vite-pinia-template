@@ -15,7 +15,7 @@
                             height="30"
                         >
                         <span class="text-logo font-bold">
-                            {{ $t('navbar.name_logo') }}
+                            {{ $t('main.takeit') }}
                         </span>
                     </a>
                     <div class="block flex items-center">
@@ -28,21 +28,30 @@
                             </li>
                             <li class="block pr-12 text-primary">
                                 {{ $t('navbar.shop') }}
+                                <span><font-awesome-icon
+                                    class="text-primary"
+                                    :icon="['fas', 'caret-down']"
+                                /></span>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="flex items-center">
                     <InputSearch />
+                    <div class="relative">
+                        <div class="flex items-center shopping-counter absolute">
+                            <span class="p-0.5">{{ shoppingCounter }}</span>
+                        </div>
+                        <span class="text-primary pl-9">
+                            <font-awesome-icon
+                                class="color-secondary text-3xl"
+                                :icon="['fas', 'cart-shopping']"
+                            />
+                        </span>
+                    </div>
                     <span class="text-primary pl-9">
                         <font-awesome-icon
-                            class="icon-navbar text-3xl"
-                            :icon="['fas', 'cart-shopping']"
-                        />
-                    </span>
-                    <span class="text-primary pl-9">
-                        <font-awesome-icon
-                            class="icon-navbar text-3xl"
+                            class="color-secondary text-3xl"
                             :icon="['fas', 'circle-user']"
                         />
                     </span>
@@ -54,18 +63,23 @@
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCartShopping, faCircleUser } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping, faCircleUser, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import InputSearch from './UI/InputSearch.vue'
 
-library.add(faCartShopping, faCircleUser)
+library.add(faCartShopping, faCircleUser, faCaretDown)
 
 export default {
     name: "NavbarComponent",
     components: {
         FontAwesomeIcon,
         InputSearch
+    },
+    data() {
+        return {
+            shoppingCounter: '9+'
+        }
     }
 };
 </script>
