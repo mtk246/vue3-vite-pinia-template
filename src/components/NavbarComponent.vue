@@ -1,7 +1,7 @@
 <template>
     <div class="shadow-md">
         <div class="container mx-auto">
-            <nav class="flex justify-between py-5 bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+            <nav class="flex justify-between py-5 bg-white">
                 <div class="flex">
                     <a
                         href="#"
@@ -33,12 +33,19 @@
                     </div>
                 </div>
                 <div class="flex items-center">
-                    <input
-                        class="shadow-md input-search rounded-full"
-                        type="text"
-                    >
-                    <span class="text-primary pl-9">shop</span>
-                    <span class="text-primary pl-9">user</span>
+                    <InputSearch />
+                    <span class="text-primary pl-9">
+                        <font-awesome-icon
+                            class="icon-navbar text-3xl"
+                            :icon="['fas', 'cart-shopping']"
+                        />
+                    </span>
+                    <span class="text-primary pl-9">
+                        <font-awesome-icon
+                            class="icon-navbar text-3xl"
+                            :icon="['fas', 'circle-user']"
+                        />
+                    </span>
                 </div>
             </nav>
         </div>
@@ -46,12 +53,23 @@
 </template>
 
 <script>
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCartShopping, faCircleUser } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+import InputSearch from './UI/InputSearch.vue'
+
+library.add(faCartShopping, faCircleUser)
+
 export default {
     name: "NavbarComponent",
+    components: {
+        FontAwesomeIcon,
+        InputSearch
+    }
 };
 </script>
 
 <style lang="sass">
-    @import '../scss/main.sass'
     @import '../scss/navbar.sass'
 </style>
