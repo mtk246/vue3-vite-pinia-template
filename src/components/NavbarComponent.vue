@@ -20,16 +20,16 @@
                     </a>
                     <div class="block flex items-center">
                         <ul class="flex flex-row">
-                            <li class="block pr-12 text-primary">
+                            <li class="block pr-12 text-primary-color">
                                 {{ $t('navbar.home') }}
                             </li>
-                            <li class="block pr-12 text-primary">
+                            <li class="block pr-12 text-primary-color">
                                 {{ $t('navbar.about') }}
                             </li>
-                            <li class="block pr-12 text-primary">
+                            <li class="block pr-12 text-primary-color">
                                 {{ $t('navbar.shop') }}
                                 <span><font-awesome-icon
-                                    class="text-primary"
+                                    class="text-primary-color"
                                     :icon="['fas', 'caret-down']"
                                 /></span>
                             </li>

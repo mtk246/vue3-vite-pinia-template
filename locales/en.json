@@ -1,6 +1,13 @@
 {
     "main": {
-        "takeit": "Takeit"
+        "takeit": "Takeit",
+        "button_shop": "Shop",
+        "button_login": "Login",
+        "button_add_card": "Add card"
+    },
+    "home_page" : {
+        "section-1": "Thousands of people they already trust",
+        "section-2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
     },
     "navbar": {
         "home": "Home",
