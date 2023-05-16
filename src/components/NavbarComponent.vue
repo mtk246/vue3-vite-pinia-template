@@ -49,12 +49,26 @@
                             />
                         </span>
                     </div>
-                    <span class="text-primary pl-9">
+                    <span
+                        v-if="isLoggedIn"
+                        class="text-primary pl-9"
+                    >
                         <font-awesome-icon
                             class="color-secondary text-3xl"
                             :icon="['fas', 'circle-user']"
                         />
                     </span>
+                    <span
+                        v-else
+                        class="text-primary-dark pl-9"
+                    >
+                        <span class="pr-9">
+                            <router-link to="/login">Login</router-link>
+                        </span>
+                        <span>
+                            <router-link to="/register">Sign Up</router-link>
+                        </span>
+                    </span>                    
                 </div>
             </nav>
         </div>
@@ -78,6 +92,7 @@ export default {
     },
     data() {
         return {
+            isLoggedIn: false,
             shoppingCounter: '9+'
         }
     }
