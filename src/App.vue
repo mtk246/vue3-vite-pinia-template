@@ -1,47 +1,38 @@
 <template>
+    <NavbarComponent v-if="!isLoggedIn" />
     <div id="app">
-        <a
-            href="https://vitejs.dev"
-            target="_blank"
-        >
-            <img
-                src="/vite.svg"
-                class="logo"
-                alt="Vite logo"
-            >
-        </a>
-        <a
-            href="https://vuejs.org/"
-            target="_blank"
-        >
-            <img
-                src="./assets/vue.svg"
-                class="logo vue"
-                alt="Vue logo"
-            >
-        </a>
         <router-view />
     </div>
+    <FooterComponent v-if="!isLoggedIn" />
 </template>
 
 <script>
-export default {
-  name: 'App',
-  components: {}
-}
-</script>
+import { mapState } from 'pinia'
+import { mapActions } from 'pinia'
+import { userAuthStore } from './store/auth'
+import NavbarComponent from "./components/NavbarComponent.vue";
+import FooterComponent from "./components/FooterComponent.vue";
 
-<style scoped>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.vue:hover {
-    filter: drop-shadow(0 0 2em #42b883aa);
-  }
-</style>
+export default {
+    name: "App",
+    components: {
+        NavbarComponent,
+        FooterComponent,
+    },
+    computed: {
+        ...mapState(userAuthStore, ['isLoggedIn'])
+    },
+    watch:{
+        $route() {
+            if (this.$route.path == '/login' && this.$route.path == '/register') {
+                this.login;
+            } else {
+                this.logout;
+            }
+        }
+    },
+    methods: {
+        ...mapActions(userAuthStore, ['login', 'logout']),
+    },
+};
+</script>

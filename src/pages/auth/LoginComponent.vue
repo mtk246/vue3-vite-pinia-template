@@ -1,0 +1,84 @@
+<template>
+    <div class="px-20 bg-primary-dark h-screen flex items-center">
+        <div class="w-full rounded-md grid grid-cols-2 gap-2 bg-content">
+            <div class="flex flex-col px-20 py-10">
+                <div class="text-white text-left pb-15 px-10">
+                    <router-link
+                        to="/login"
+                        @click="login"
+                    >
+                        {{ $t('main.login') }}
+                    </router-link>
+                    <router-link
+                        class="pl-20"
+                        to="/register"
+                        @click="login"
+                    >
+                        {{ $t('main.sign_up') }}
+                    </router-link>
+                </div>
+                <div class="px-10">
+                    <span class="text-white text-title font-bold">{{ $t('main.login') }}</span>
+                    <div class="pt-6">
+                        <v-form
+                            class="flex flex-col"
+                            @submit.prevent
+                        >
+                            <v-text-field
+                                class="text-white"
+                                :label="$t('auth.user')"
+                                block
+                                clearable
+                            />
+                            <v-text-field
+                                class="text-white"
+                                :label="$t('auth.password')"
+                                type="password"
+                                clearable
+                            />
+                            <v-checkbox
+                                class="text-white"
+                                :label="$t('auth.remember_me')"
+                            />
+                            <v-btn
+                                class="mx-28"
+                                type="submit"
+                                rounded="xl"
+                            >
+                                <span class="normal-case font-bold">
+                                    Login
+                                </span>
+                            </v-btn>
+                        </v-form>
+                    </div>
+                </div>
+                <div class="pt-3 pb-15 px-10 text-center opacity-50">
+                    <a
+                        href="#"
+                        class="text-white"
+                    >
+                        {{ $t('auth.forgot_password') }}
+                    </a>
+                </div>
+            </div>
+            <div>
+                <img
+                    class="h-full rounded-md"
+                    src="../../assets/login-bg.jpg"
+                    alt="login image"
+                >
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: "LoginComponent",
+};
+</script>
+
+<style lang="sass">
+    @import '../../scss/main'
+    @import '../../scss/auth'
+</style>
