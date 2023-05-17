@@ -3,9 +3,9 @@
         <div class="container mx-auto">
             <nav class="flex justify-between py-5 bg-white">
                 <div class="flex">
-                    <a
-                        href="#"
+                    <router-link
                         class="flex items-center pr-9"
+                        to="/"
                     >
                         <img
                             src="../assets/logo.svg"
@@ -17,7 +17,7 @@
                         <span class="text-logo font-bold">
                             {{ $t('main.takeit') }}
                         </span>
-                    </a>
+                    </router-link>
                     <div class="block flex items-center">
                         <ul class="flex flex-row whitespace-nowrap">
                             <li class="block pr-12 text-primary-color">
@@ -53,15 +53,16 @@
                         v-if="isLoggedIn"
                         class="text-primary pl-9"
                     >
-                        <a
-                            href="#"
+                        <router-link
+                            class=""
+                            to="/"
                             @click="logout"
                         >
                             <font-awesome-icon
                                 class="color-secondary text-3xl"
                                 :icon="['fas', 'circle-user']"
                             />
-                        </a>
+                        </router-link>
                     </span>
                     <span
                         v-else
@@ -71,13 +72,17 @@
                             <router-link
                                 to="/login"
                                 @click="login"
-                            >Login</router-link>
+                            >
+                                {{ $t('main.login') }}
+                            </router-link>
                         </span>
                         <span>
                             <router-link
                                 to="/register"
                                 @click="login"
-                            >Sign Up</router-link>
+                            >
+                                {{ $t('main.sign_up') }}
+                            </router-link>
                         </span>
                     </span>                    
                 </div>
