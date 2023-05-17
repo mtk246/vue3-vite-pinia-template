@@ -36,14 +36,14 @@
                                 type="password"
                                 clearable
                             />
-                            <div class="mt-2">
+                            <div class="mb-2 checkbox-container">
                                 <label class="inline-flex items-center">
                                     <input
                                         type="checkbox"
-                                        class="w-8 h-8"
+                                        class="w-5 h-5"
                                         @click="toggleCheckbox"
                                     >
-                                    <span class="ml-2 text-white">{{ $t('auth.remember_me') }}</span>
+                                    <span class="text-white">{{ $t('auth.remember_me') }}</span>
                                 </label>
                             </div>
                             <v-btn
@@ -67,9 +67,9 @@
                     </a>
                 </div>
             </div>
-            <div>
+            <div class="login-image">
                 <img
-                    class="h-full rounded-md"
+                    class="rounded-md"
                     src="../../assets/login-bg.jpg"
                     alt="login image"
                 >
@@ -83,7 +83,7 @@ export default {
     name: "LoginComponent",
     data() {
         return {
-        isChecked: false,
+            isChecked: false,
         };
     },
     methods: {
@@ -97,4 +97,5 @@ export default {
 <style lang="sass">
     @import '../../scss/main'
     @import '../../scss/auth'
+    @import '../../scss/login_signup'
 </style>
