@@ -53,20 +53,31 @@
                         v-if="isLoggedIn"
                         class="text-primary pl-9"
                     >
-                        <font-awesome-icon
-                            class="color-secondary text-3xl"
-                            :icon="['fas', 'circle-user']"
-                        />
+                        <a
+                            href="#"
+                            @click="logout"
+                        >
+                            <font-awesome-icon
+                                class="color-secondary text-3xl"
+                                :icon="['fas', 'circle-user']"
+                            />
+                        </a>
                     </span>
                     <span
                         v-else
                         class="text-primary-dark pl-9"
                     >
                         <span class="pr-9">
-                            <router-link to="/login">Login</router-link>
+                            <router-link
+                                to="/login"
+                                @click="login"
+                            >Login</router-link>
                         </span>
                         <span>
-                            <router-link to="/register">Sign Up</router-link>
+                            <router-link
+                                to="/register"
+                                @click="login"
+                            >Sign Up</router-link>
                         </span>
                     </span>                    
                 </div>
@@ -76,6 +87,8 @@
 </template>
 
 <script>
+import { mapActions } from 'pinia'
+import { userAuthStore } from '../store/auth'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCartShopping, faCircleUser, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -92,9 +105,11 @@ export default {
     },
     data() {
         return {
-            isLoggedIn: false,
             shoppingCounter: '9+'
         }
+    },
+    methods: {
+        ...mapActions(userAuthStore, ['login', 'logout']),
     }
 };
 </script>

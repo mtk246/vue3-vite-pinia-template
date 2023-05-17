@@ -41,7 +41,7 @@
                             size="small"
                         >
                             <span class="normal-case font-bold">
-                                {{ $t('main.button_add_card') }}
+                                {{ $t('main.add_card') }}
                             </span>
                         </v-btn>
                     </div>

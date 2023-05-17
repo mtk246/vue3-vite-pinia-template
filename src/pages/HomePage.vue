@@ -23,7 +23,7 @@
                             size="large"
                         >
                             <span class="px-2 normal-case font-bold">
-                                {{ $t('main.button_shop') }}
+                                {{ $t('main.shop') }}
                             </span>
                         </v-btn>
                     </div>
@@ -34,7 +34,7 @@
                             size="large"
                         >
                             <span class="px-2 normal-case font-bold">
-                                {{ $t('main.button_login') }}
+                                {{ $t('main.login') }}
                             </span>
                         </v-btn>
                     </div>

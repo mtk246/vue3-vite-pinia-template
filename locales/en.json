@@ -1,9 +1,17 @@
 {
     "main": {
         "takeit": "Takeit",
-        "button_shop": "Shop",
-        "button_login": "Login",
-        "button_add_card": "Add card"
+        "shop": "Shop",
+        "login": "Login",
+        "sign_up": "Sign up",
+        "add_card": "Add card"
+    },
+    "auth": {
+        "forgot_password": "Forgot password?",
+        "remember_me": "Remember me",
+        "user": "User",
+        "password": "Password",
+        "email": "Email"
     },
     "home_page" : {
         "section-1": "Thousands of people they already trust",
