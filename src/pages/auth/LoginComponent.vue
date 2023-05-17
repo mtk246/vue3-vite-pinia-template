@@ -36,10 +36,16 @@
                                 type="password"
                                 clearable
                             />
-                            <v-checkbox
-                                class="text-white"
-                                :label="$t('auth.remember_me')"
-                            />
+                            <div class="mt-2">
+                                <label class="inline-flex items-center">
+                                    <input
+                                        type="checkbox"
+                                        class="w-8 h-8"
+                                        @click="toggleCheckbox"
+                                    >
+                                    <span class="ml-2 text-white">{{ $t('auth.remember_me') }}</span>
+                                </label>
+                            </div>
                             <v-btn
                                 class="mx-28"
                                 type="submit"
@@ -75,6 +81,16 @@
 <script>
 export default {
     name: "LoginComponent",
+    data() {
+        return {
+        isChecked: false,
+        };
+    },
+    methods: {
+        toggleCheckbox() {
+            this.isChecked = !this.isChecked;
+        },
+    },
 };
 </script>
 
