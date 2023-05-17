@@ -1,8 +1,31 @@
 {
+    "main": {
+        "takeit": "Takeit",
+        "shop": "Shop",
+        "login": "Login",
+        "sign_up": "Sign up",
+        "add_card": "Add card"
+    },
+    "auth": {
+        "forgot_password": "Forgot password?",
+        "remember_me": "Remember me",
+        "user": "User",
+        "password": "Password",
+        "email": "Email"
+    },
+    "home_page" : {
+        "section-1": "Thousands of people they already trust",
+        "section-2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
     "navbar": {
-        "name_logo": "Takeit",
         "home": "Home",
         "about": "About",
         "shop": "Shop"
+    },
+    "footer": {
+        "term-of-service": "Terms of Service",
+        "privacy-policy": "Privacy policy",
+        "section-1": "Website Designed By",
+        "section-2": "Ciph3r."
     }
 }
