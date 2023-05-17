@@ -19,7 +19,7 @@
                         </span>
                     </a>
                     <div class="block flex items-center">
-                        <ul class="flex flex-row">
+                        <ul class="flex flex-row whitespace-nowrap">
                             <li class="block pr-12 text-primary-color">
                                 {{ $t('navbar.home') }}
                             </li>
@@ -36,7 +36,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="flex items-center">
+                <div class="flex items-center whitespace-nowrap">
                     <InputSearch />
                     <div class="relative">
                         <div class="flex items-center shopping-counter absolute">

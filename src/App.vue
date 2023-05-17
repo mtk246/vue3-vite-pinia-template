@@ -1,9 +1,9 @@
 <template>
-    <NavbarComponent v-if="!isLoggedIn" />
+    <NavbarComponent />
     <div id="app">
         <router-view />
     </div>
-    <FooterComponent v-if="!isLoggedIn" />
+    <FooterComponent />
 </template>
 
 <script>
