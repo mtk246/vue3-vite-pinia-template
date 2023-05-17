@@ -28,10 +28,12 @@
                             </li>
                             <li class="block pr-12 text-primary-color">
                                 {{ $t('navbar.shop') }}
-                                <span><font-awesome-icon
-                                    class="text-primary-color"
-                                    :icon="['fas', 'caret-down']"
-                                /></span>
+                                <span>
+                                    <font-awesome-icon
+                                        class="text-primary-color"
+                                        :icon="['fas', 'caret-down']"
+                                    />
+                                </span>
                             </li>
                         </ul>
                     </div>

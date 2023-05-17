@@ -49,22 +49,81 @@
             </div>
         </div>
     </div>
-    <CardProduct />
+    <div class="pt-16">
+        <FilterProduct>
+            <template #title>
+                {{ $t('home_page.explorer_title') }}
+            </template>
+        </FilterProduct>
+        <CardProduct :products-test="productsTest">
+            <template #text-button>
+                {{ $t('main.add_card') }}
+            </template>
+        </CardProduct>
+    </div>
+    <div class="pt-16">
+        <CategoriesComponent />
+    </div>
+    <div class="pt-16 pb-16">
+        <div class="text-center">
+            <span class="font-size-ml font-bold text-title drop-shadow-md">
+                {{ $t('home_page.you_might_also_like') }}
+            </span>
+        </div>
+        <CardProduct
+            :show-stock="false"
+            :show-time="false"
+            :show-description="false"
+            :show-price="false"
+            :white-theme="false"
+            :view-all="false"
+            :products-test="productsTest"
+        >
+            <template #text-button>
+                {{ $t('main.view') }}
+            </template>
+        </CardProduct>
+    </div>
 </template>
 
 <script>
-import CardProduct from '../components/CardProduct.vue';
+import CategoriesComponent from '../components/categories/CategoriesComponent.vue';
+import CardProduct from '../components/products/CardProduct.vue';
+import FilterProduct from '../components/products/FilterProduct.vue';
 
 export default {
     name: "HomePage",
     components: {
-        CardProduct
+        CardProduct,
+        FilterProduct,
+        CategoriesComponent
     },
     data() {
         return {
-            msg: 'Hello World!'
+            msg: 'Hello World!',
+            products: [
+                {
+                    id: 1,
+                    decription: 'Lorem sit consectetur adipisicing elit.',
+                    price: '22022000',
+                    time: '3 minutes ago',
+                    quantityStore: 22,
+                },
+            ]
+        }
+    },
+    computed: {
+        productsTest() {
+            let products = [];
+
+            for (let i = 0; i < 8; i++) {
+                products.push(this.products[0]);
+            }
+
+            return products;
         }
     }
+
 };
 </script>
 
