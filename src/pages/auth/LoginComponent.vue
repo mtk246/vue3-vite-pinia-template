@@ -22,15 +22,17 @@
                     <div class="pt-6">
                         <v-form
                             class="flex flex-col"
-                            @submit.prevent
+                            @submit.prevent="submit"
                         >
                             <v-text-field
+                                v-model="user"
                                 class="text-white"
                                 :label="$t('auth.user')"
                                 block
                                 clearable
                             />
                             <v-text-field
+                                v-model="password"
                                 class="text-white"
                                 :label="$t('auth.password')"
                                 type="password"
@@ -79,14 +81,31 @@
 </template>
 
 <script>
+import axios from "axios";
+import { API_URL } from "../../utils/constants";
+
 export default {
     name: "LoginComponent",
     data() {
         return {
+            user: '',
+            password: '',
             isChecked: false,
         };
     },
     methods: {
+        async submit() {
+            try {
+                const response = await axios.post(API_URL + '/login', {
+                    user_name: this.user,
+                    password: this.password
+                });
+
+                console.log(response);
+            } catch (error) {
+                console.error(error);
+            }
+        },
         toggleCheckbox() {
             this.isChecked = !this.isChecked;
         },

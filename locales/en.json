@@ -4,7 +4,10 @@
         "shop": "Shop",
         "login": "Login",
         "sign_up": "Sign up",
-        "add_card": "Add card"
+        "add_card": "Add card",
+        "view_all": "View all",
+        "view_category": "View category",
+        "view": "View"
     },
     "auth": {
         "forgot_password": "Forgot password?",
@@ -15,7 +18,12 @@
     },
     "home_page" : {
         "section-1": "Thousands of people they already trust",
-        "section-2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "section-2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "explorer_title": "Explorer",
+        "you_might_also_like": "You Might Also Like"
+    },
+    "categories_component": {
+        "categories": "Categories"
     },
     "navbar": {
         "home": "Home",
