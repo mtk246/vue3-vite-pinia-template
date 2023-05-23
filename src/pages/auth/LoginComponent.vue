@@ -81,8 +81,8 @@
 </template>
 
 <script>
-import axios from "axios";
-import { API_URL } from "../../utils/constants";
+import { mapActions } from 'pinia'
+import { userAuthStore } from '../../stores/authUser'
 
 export default {
     name: "LoginComponent",
@@ -94,17 +94,14 @@ export default {
         };
     },
     methods: {
+        ...mapActions(userAuthStore, ['login']),
         async submit() {
-            try {
-                const response = await axios.post(API_URL + '/login', {
-                    user_name: this.user,
-                    password: this.password
-                });
+            await this.login({
+                user_name: this.user,
+                password: this.password
+            });
 
-                console.log(response);
-            } catch (error) {
-                console.error(error);
-            }
+            this.$router.push('/dashboard')
         },
         toggleCheckbox() {
             this.isChecked = !this.isChecked;

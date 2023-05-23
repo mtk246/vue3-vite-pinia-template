@@ -9,7 +9,7 @@
 <script>
 import { mapState } from 'pinia'
 import { mapActions } from 'pinia'
-import { userAuthStore } from './store/auth'
+import { userAuthStore } from './stores/authUser'
 import NavbarComponent from "./components/NavbarComponent.vue";
 import FooterComponent from "./components/FooterComponent.vue";
 

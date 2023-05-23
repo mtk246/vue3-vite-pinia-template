@@ -95,7 +95,7 @@
 
 <script>
 import { mapActions } from 'pinia'
-import { userAuthStore } from '../store/auth'
+import { userAuthStore } from '../stores/authUser'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCartShopping, faCircleUser, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
