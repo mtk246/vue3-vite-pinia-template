@@ -52,7 +52,7 @@
                         </span>
                     </div>
                     <span
-                        v-if="isLoggedIn"
+                        v-if="getIsLoggedIn"
                         class="text-primary pl-9"
                     >
                         <router-link
@@ -94,7 +94,7 @@
 </template>
 
 <script>
-import { mapActions } from 'pinia'
+import { mapState, mapActions } from 'pinia'
 import { userAuthStore } from '../stores/authUser'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCartShopping, faCircleUser, faCaretDown } from '@fortawesome/free-solid-svg-icons'
@@ -115,9 +115,12 @@ export default {
             shoppingCounter: '9+'
         }
     },
+    computed: {
+        ...mapState(userAuthStore, ['getIsLoggedIn']),
+    },
     methods: {
-        ...mapActions(userAuthStore, ['login', 'logout']),
-    }
+        ...mapActions(userAuthStore, ['logout']),
+    },
 };
 </script>
 

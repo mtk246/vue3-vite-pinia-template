@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { API_URL } from '../utils/constants'
+import { useToast } from "vue-toastification";
 import axios from 'axios'
 import jsCookie from 'js-cookie'
 
@@ -28,9 +29,13 @@ export const userAuthStore = defineStore('userAuth', {
                     }
 
                     jsCookie.set(AUTH_STORAGE_KEY, JSON.stringify(authData))
+
+                    useToast().success(response.data.message);
                 }
+
             } catch (error) {
-                console.error(error)
+                const errorData = error.response.data
+                useToast().error(errorData.message ?? errorData.error);
             }
         },
         async register(userData) {
@@ -48,10 +53,13 @@ export const userAuthStore = defineStore('userAuth', {
                     }
 
                     jsCookie.set(AUTH_STORAGE_KEY, JSON.stringify(authData))
+
+                    useToast().success(response.data.message);
                 }
 
             } catch (error) {
-                console.error(error)
+                const errorData = error.response.data
+                useToast().error(errorData.message ?? errorData.error);
             }
         },
         logout() {
