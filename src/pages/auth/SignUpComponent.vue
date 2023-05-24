@@ -22,21 +22,24 @@
                     <div class="pt-6">
                         <v-form
                             class="flex flex-col"
-                            @submit.prevent
+                            @submit.prevent="submit"
                         >
                             <v-text-field
+                                v-model="user"
                                 class="text-white"
                                 :label="$t('auth.user')"
                                 block
                                 clearable
                             />
                             <v-text-field
+                                v-model="email"
                                 class="text-white"
                                 :label="$t('auth.email')"
                                 type="email"
                                 clearable
                             />
                             <v-text-field
+                                v-model="password"
                                 class="text-white"
                                 :label="$t('auth.password')"
                                 type="password"
@@ -85,14 +88,32 @@
 </template>
 
 <script>
+import { mapActions } from 'pinia';
+import { userAuthStore } from '../../stores/authUser';
+
 export default {
     name: "SignUpComponent",
     data() {
         return {
-        isChecked: false,
+            user: '',
+            password: '',
+            email: '',
+            isChecked: false,
         };
     },
+    mounted() {
+        userAuthStore().initialize();
+    },
     methods: {
+        ...mapActions(userAuthStore, ['register']),
+        async submit() {
+            await this.register({
+                name: this.user,
+                password: this.password
+            });
+
+            this.$router.push('/dashboard')
+        },
         toggleCheckbox() {
             this.isChecked = !this.isChecked;
         },

@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
-import axios from 'axios'
 import { API_URL } from '../utils/constants'
+import axios from 'axios'
+import jsCookie from 'js-cookie'
 
 const AUTH_STORAGE_KEY = 'userAuth'
 
@@ -20,13 +21,35 @@ export const userAuthStore = defineStore('userAuth', {
                 if (response.data) {
                     this.authUser = { user: userData.user_name, token: response.data.token }
                     this.isLoggedIn = true
-                    // Save isLoggedIn state and token to localStorage
+
                     const authData = {
                         isLoggedIn: this.isLoggedIn,
-                        token: response.data.token,
+                        token: response.data.token
                     }
-                    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(authData))
+
+                    jsCookie.set(AUTH_STORAGE_KEY, JSON.stringify(authData))
                 }
+            } catch (error) {
+                console.error(error)
+            }
+        },
+        async register(userData) {
+            try {
+                const response = await axios.post(API_URL + '/createUser', userData);
+                const data = response.data;
+
+                if (response.data) {
+                    this.authUser = { name: userData.name , token: data.token }
+                    this.isLoggedIn = true
+
+                    const authData = {
+                        isLoggedIn: this.isLoggedIn,
+                        token: data.token,
+                    }
+
+                    jsCookie.set(AUTH_STORAGE_KEY, JSON.stringify(authData))
+                }
+
             } catch (error) {
                 console.error(error)
             }
@@ -34,21 +57,19 @@ export const userAuthStore = defineStore('userAuth', {
         logout() {
             this.isLoggedIn = false
             this.authUser = {}
-            // Remove isLoggedIn state and token from localStorage
-            localStorage.removeItem(AUTH_STORAGE_KEY)
+
+            jsCookie.remove(AUTH_STORAGE_KEY)
         },
         initialize() {
-            // Load isLoggedIn state and token from localStorage during initialization
-            const storedAuthData = localStorage.getItem(AUTH_STORAGE_KEY)
-            console.log(storedAuthData)
+            const storedAuthData = jsCookie.get(AUTH_STORAGE_KEY)
+
             if (storedAuthData) {
                 const { isLoggedIn, token } = JSON.parse(storedAuthData)
                 this.isLoggedIn = isLoggedIn
-                this.authUser = { user: '', token } // Set the authUser object correctly
+                this.authUser = { user: '', token }
             }
         },
     },
-    // Call initialize during store creation
     initialize() {
         this.initialize()
     },
