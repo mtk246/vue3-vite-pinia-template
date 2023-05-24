@@ -81,8 +81,8 @@
 </template>
 
 <script>
-import { mapActions } from 'pinia'
-import { userAuthStore } from '../../stores/authUser'
+import { mapActions } from 'pinia';
+import { userAuthStore } from '../../stores/authUser';
 
 export default {
     name: "LoginComponent",
@@ -92,6 +92,9 @@ export default {
             password: '',
             isChecked: false,
         };
+    },
+    mounted() {
+        userAuthStore().initialize();
     },
     methods: {
         ...mapActions(userAuthStore, ['login']),

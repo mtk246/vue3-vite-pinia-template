@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import { mapState } from 'pinia'
 import { mapActions } from 'pinia'
 import { userAuthStore } from './stores/authUser'
 import NavbarComponent from "./components/NavbarComponent.vue";
@@ -19,20 +18,20 @@ export default {
         NavbarComponent,
         FooterComponent,
     },
-    computed: {
-        ...mapState(userAuthStore, ['isLoggedIn'])
-    },
     watch:{
         $route() {
-            if (this.$route.path == '/login' && this.$route.path == '/register') {
+            if (this.$route.path == '/login' || this.$route.path == '/register') {
                 this.login;
             } else {
                 this.logout;
             }
         }
     },
+    created() {
+        this.initialize();
+    },
     methods: {
-        ...mapActions(userAuthStore, ['login', 'logout']),
+        ...mapActions(userAuthStore, ['initialize']),
     },
 };
 </script>
