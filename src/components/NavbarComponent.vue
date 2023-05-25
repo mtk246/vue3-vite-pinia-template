@@ -28,10 +28,12 @@
                             </li>
                             <li class="block pr-12 text-primary-color">
                                 {{ $t('navbar.shop') }}
-                                <span><font-awesome-icon
-                                    class="text-primary-color"
-                                    :icon="['fas', 'caret-down']"
-                                /></span>
+                                <span>
+                                    <font-awesome-icon
+                                        class="text-primary-color"
+                                        :icon="['fas', 'caret-down']"
+                                    />
+                                </span>
                             </li>
                         </ul>
                     </div>
@@ -50,7 +52,7 @@
                         </span>
                     </div>
                     <span
-                        v-if="isLoggedIn"
+                        v-if="getIsLoggedIn"
                         class="text-primary pl-9"
                     >
                         <router-link
@@ -92,8 +94,8 @@
 </template>
 
 <script>
-import { mapActions } from 'pinia'
-import { userAuthStore } from '../store/auth'
+import { mapState, mapActions } from 'pinia'
+import { userAuthStore } from '../stores/authUser'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCartShopping, faCircleUser, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -113,9 +115,12 @@ export default {
             shoppingCounter: '9+'
         }
     },
+    computed: {
+        ...mapState(userAuthStore, ['getIsLoggedIn']),
+    },
     methods: {
-        ...mapActions(userAuthStore, ['login', 'logout']),
-    }
+        ...mapActions(userAuthStore, ['logout']),
+    },
 };
 </script>
 

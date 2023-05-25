@@ -4,14 +4,20 @@
             <div class="flex flex-col px-20 py-10">
                 <div class="text-white text-left pb-15 px-10">
                     <router-link
+                        to="/"
+                    >
+                        <font-awesome-icon :icon="['fas', 'house']" />
+                    </router-link>                    
+                    <router-link
                         to="/login"
+                        class="pl-20"
                         @click="login"
                     >
                         {{ $t('main.login') }}
                     </router-link>
                     <router-link
-                        class="pl-20"
                         to="/register"
+                        class="pl-20"
                         @click="login"
                     >
                         {{ $t('main.sign_up') }}
@@ -22,15 +28,17 @@
                     <div class="pt-6">
                         <v-form
                             class="flex flex-col"
-                            @submit.prevent
+                            @submit.prevent="submit"
                         >
                             <v-text-field
+                                v-model="user"
                                 class="text-white"
                                 :label="$t('auth.user')"
                                 block
                                 clearable
                             />
                             <v-text-field
+                                v-model="password"
                                 class="text-white"
                                 :label="$t('auth.password')"
                                 type="password"
@@ -79,14 +87,42 @@
 </template>
 
 <script>
+import { mapActions } from 'pinia';
+import { userAuthStore } from '../../stores/authUser';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faHouse)
+
 export default {
     name: "LoginComponent",
+    components: {
+        FontAwesomeIcon,
+    },
     data() {
         return {
+            user: '',
+            password: '',
             isChecked: false,
         };
     },
+    mounted() {
+        this.initialize();
+    },
     methods: {
+        ...mapActions(userAuthStore, [
+            'login',
+            'initialize'
+        ]),
+        async submit() {
+            await this.login({
+                user_name: this.user,
+                password: this.password
+            });
+
+            this.$router.push('/dashboard')
+        },
         toggleCheckbox() {
             this.isChecked = !this.isChecked;
         },
