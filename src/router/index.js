@@ -6,6 +6,7 @@ import DashboardPage from '../pages/DashboardPage.vue'
 import LoginComponent from '../pages/auth/LoginComponent.vue'
 import SignUpComponent from '../pages/auth/SignUpComponent.vue'
 import NotFound from '../pages/NotFound.vue';
+import HomeComponent from '../pages/superadmin/Home.vue';
 
 const routes = [
   {
@@ -37,6 +38,12 @@ const routes = [
     name: 'Dashboard',
     component: DashboardPage,
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/superadmin',
+    name: 'Superadmin',
+    component: HomeComponent,
+    meta: {requiresAuth: true},
   },
   {
     path: '/404',
