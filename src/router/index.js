@@ -5,6 +5,7 @@ import AboutComponent from '../pages/AboutComponent.vue'
 import DashboardPage from '../pages/DashboardPage.vue'
 import LoginComponent from '../pages/auth/LoginComponent.vue'
 import SignUpComponent from '../pages/auth/SignUpComponent.vue'
+import NotFound from '../pages/NotFound.vue';
 
 const routes = [
   {
@@ -36,7 +37,16 @@ const routes = [
     name: 'Dashboard',
     component: DashboardPage,
     meta: { requiresAuth: true }
-  }
+  },
+  {
+    path: '/404',
+    component: NotFound,
+    meta: {guest: true},
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/404'
+  },
 ]
 
 const router = createRouter({

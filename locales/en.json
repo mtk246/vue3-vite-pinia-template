@@ -35,5 +35,9 @@
         "privacy-policy": "Privacy policy",
         "section-1": "Website Designed By",
         "section-2": "Ciph3r."
+    },
+    "page_not_found": {
+        "page_not_found": "404 - Page Not Found",
+        "content": "The page you are looking for does not exist."
     }
 }
