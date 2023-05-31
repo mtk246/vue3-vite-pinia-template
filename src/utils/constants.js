@@ -6,3 +6,7 @@ export const PATH_ARR = [
     '/register',
     '/superadmin',
 ];
+
+export const ADMIN_PATH_ARR = [
+    '/superadmin',
+]
