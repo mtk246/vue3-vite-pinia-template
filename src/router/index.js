@@ -43,7 +43,7 @@ const routes = [
     path: '/superadmin',
     name: 'Superadmin',
     component: HomeComponent,
-    meta: {requiresAuth: true},
+    meta: {guest: true},
   },
   {
     path: '/404',

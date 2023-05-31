@@ -11,6 +11,7 @@ import { mapActions, mapState } from 'pinia'
 import { userAuthStore } from './stores/authUser'
 import NavbarComponent from "./components/NavbarComponent.vue";
 import FooterComponent from "./components/FooterComponent.vue";
+import { PATH_ARR } from "./utils/constants";
 
 export default {
     name: "App",
@@ -30,9 +31,7 @@ export default {
         $route(newValue) {
             const path = newValue.path
 
-            path == '/login' || path == '/register'
-                ? this.hideComponents = false
-                : this.hideComponents = true
+            this.hideComponents = !PATH_ARR.includes(path);
         }
     },
     created() {
